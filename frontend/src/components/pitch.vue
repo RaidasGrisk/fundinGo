@@ -61,6 +61,7 @@ import { CrownOutlined, ExceptionOutlined, SmileOutlined, RocketFilled } from '@
         content: true,
         footer: 'soft'
       }"
+      style="max-width: 70vh;"
       hoverable
     >
       <n-space justify="space-between" horizontal>
@@ -119,7 +120,7 @@ import { CrownOutlined, ExceptionOutlined, SmileOutlined, RocketFilled } from '@
         </n-step>
         <n-step
           title="Get funded"
-          description="💸"
+          description="🚀"
         >
           <template #icon>
             <n-icon :component="RocketFilled"/>

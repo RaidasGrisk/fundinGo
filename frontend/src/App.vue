@@ -16,7 +16,7 @@ import HelloWorld from './components/HelloWorld.vue'
 import Header from './components/header.vue'
 import Banner from './components/banner.vue'
 import Pitch from './components/pitch.vue'
-import Filters from './components/filters.vue'
+// import Filters from './components/filters.vue'
 import Footer from './components/footer.vue'
 
 onMounted(() => {
@@ -53,10 +53,10 @@ theme.common.infoColor = '#000000'
               <n-thing class="py-24 px-8 md:py-32 md:px-32">
                 <Pitch />
               </n-thing>
-              <n-divider style="margin: 0px;"/>
+              <!-- <n-divider style="margin: 0px;"/>
               <n-thing class="py-24 px-8 md:py-32 md:px-32">
                 <Filters />
-              </n-thing>
+              </n-thing> -->
             </n-layout-content>
             <n-layout-footer bordered>
               <n-thing class="py-8 px-8 md:py-32 md:px-32">
