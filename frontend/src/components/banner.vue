@@ -1,8 +1,12 @@
 <script setup>
 import { loadFull } from "tsparticles"
 import { useIsMobile } from '.././utils/composables'
+import { useThemeVars } from 'naive-ui'
+import { ref, computed } from 'vue'
 
+const themeVars = useThemeVars()
 const isMobile = useIsMobile()
+const particles = ref(null)
 
 const particlesInit = async (engine) => {
   await loadFull(engine);
@@ -10,8 +14,19 @@ const particlesInit = async (engine) => {
 
 const particlesLoaded = async (container) => {
   console.log("Particles container loaded", container);
+  particles.value = container
 }
-const particlesOptions = {
+
+// this should be just an object, not a computed
+// but its like this because not sure how else to make it reactive
+const particlesOptions = computed(() => {
+
+  if (particles.value) {
+    particles.value._options.interactivity.modes.grab.links.color = themeVars.value.successColor
+    particles._rawValue.refresh()
+  }
+
+  return {
   "fullScreen": false,
   "particles": {
     "number": {
@@ -94,7 +109,7 @@ const particlesOptions = {
         "distance": 200,
         "line_linked": {
           "opacity": 0.7,
-          "color": "#00B2CA",
+          "color": themeVars.value.successColor,
         }
       },
       "bubble": {
@@ -117,7 +132,7 @@ const particlesOptions = {
     }
   },
   "retina_detect": true
-}
+}})
 
 </script>
 

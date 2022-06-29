@@ -11,7 +11,8 @@
     "particles.vue3": "^2.1.0",
     "sal.js": "^0.8.5",
     "tsparticles": "^2.1.0",
-    "vue": "^3.2.25"
+    "vue": "^3.2.25",
+    "vuex": "^4.0.2"
   },
   "devDependencies": {
     "@vicons/antd": "^0.12.0",

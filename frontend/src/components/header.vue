@@ -1,10 +1,18 @@
 <script setup>
-// import { ref } from 'vue'
+import { ref } from 'vue'
 import { useMessage } from 'naive-ui'
 import { MenuOutlined } from '@vicons/antd'
 
 const message = useMessage()
 const handleBack = () => { message.info('[onBack]') }
+
+// color select
+import { useStore } from 'vuex'
+const store = useStore()
+const activeDrawer = ref(false)
+
+const theme = store.getters['theme/getTheme']
+
 </script>
 
 <template>
@@ -12,7 +20,6 @@ const handleBack = () => { message.info('[onBack]') }
     <template #avatar>
       <a href="" style="text-decoration: none; color: inherit" class="floating">
         <span style="font-size: 3em;">
-          💸
         </span>
       </a>
     </template>
@@ -32,8 +39,15 @@ const handleBack = () => { message.info('[onBack]') }
     <template #subtitle>
     </template>
 
+    <n-drawer v-model:show="activeDrawer" :width="200" :placement="'right'" :show-mask="false">
+      <n-drawer-content title="Color Select">
+        <n-color-picker v-model:value="theme.common.primaryColor" :show-alpha="false" />
+        <n-color-picker v-model:value="theme.common.successColor" :show-alpha="false" />
+        <n-color-picker v-model:value="theme.common.infoColor" :show-alpha="false" />
+      </n-drawer-content>
+    </n-drawer>
     <template #extra>
-      <n-button size="large">
+      <n-button size="large" @click="activeDrawer = !activeDrawer">
         <template #icon>
           <n-icon :depth="2" :component="MenuOutlined"></n-icon>
         </template>
