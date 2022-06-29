@@ -124,7 +124,7 @@ const rules = {
           </n-text>
         </n-h1>
         <n-h3 data-sal="slide-up" data-sal-delay="700" data-sal-easing="ease-out-back" data-sal-duration="500">
-          Fill in your info and look through the funding you want.
+          Fill in your info and look through the funding available.
         </n-h3>
         <n-h1 data-sal="slide-up" data-sal-delay="1000" data-sal-easing="ease-out-back" data-sal-duration="500">
           🚀
@@ -268,7 +268,7 @@ const rules = {
             </n-grid>
           </n-form-item>
           <div>
-            <n-button strong size="large" type="primary">
+            <n-button strong size="large" type="primary" style="--n-text-color: #222222">
               <template #icon>
                 🚀
               </template>

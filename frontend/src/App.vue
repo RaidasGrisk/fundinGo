@@ -40,25 +40,26 @@ theme.common.infoColor = '#000000'
       <n-message-provider placement="top-right">
         <n-notification-provider>
           <n-layout>
-            <n-layout-header class="pt-4 pb-4 pr-16 pl-16" bordered>
+            <n-layout-header class="py-4 px-8 md:py-4 md:px-16" bordered>
               <Header />
             </n-layout-header>
             <n-layout-content >
-              <n-layout bordered>
-                <n-thing class="pt-32 pb-32 pr-32 pl-32">
+              <n-layout>
+                <n-thing class="py-24 px-8 md:py-32 md:px-32">
                   <Banner />
                 </n-thing>
               </n-layout>
-              <n-divider />
-              <n-thing class="pt-32 pb-32 pr-32 pl-32">
+              <n-divider style="margin-top: 0px;"/>
+              <n-thing class="py-24 px-8 md:py-32 md:px-32">
                 <Pitch />
               </n-thing>
-              <n-thing class="pt-4 pb-4 pr-32 pl-32">
+              <n-divider style="margin: 0px;"/>
+              <n-thing class="py-24 px-8 md:py-32 md:px-32">
                 <Filters />
               </n-thing>
             </n-layout-content>
             <n-layout-footer bordered>
-              <n-thing class="pt-16 pb-16 pr-32 pl-32">
+              <n-thing class="py-8 px-8 md:py-32 md:px-32">
                 <Footer />
               </n-thing>
             </n-layout-footer>

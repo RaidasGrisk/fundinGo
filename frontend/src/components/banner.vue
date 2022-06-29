@@ -1,5 +1,8 @@
 <script setup>
-import { loadFull } from "tsparticles";
+import { loadFull } from "tsparticles"
+import { useIsMobile } from '.././utils/composables'
+
+const isMobile = useIsMobile()
 
 const particlesInit = async (engine) => {
   await loadFull(engine);
@@ -131,16 +134,16 @@ const particlesOptions = {
     </div>
     <n-space :size="[0, 20]" vertical class="noselect">
       <div data-sal="slide-up" data-sal-delay="500" data-sal-easing="ease-out-back" data-sal-duration="500">
-        <n-h1 prefix="bar" type="info">
-          <n-text type="info">
-            Do you think getting government funding is <br>
-            <n-gradient-text :gradient="{ deg: 100, from: 'var(--primary-color)', to: 'var(--success-color)' }" >overly complicated and hard?</n-gradient-text>
+        <n-h1 prefix="bar" type="info" style="max-width: 75vh">
+          <n-text type="info" :style="isMobile ? '' : 'font-size: 120%;'">
+            Do you think getting government funding is
+            <n-gradient-text :gradient="{ deg: 100, from: 'var(--primary-color)', to: 'var(--success-color)' }" >overly complicated?</n-gradient-text>
             🤯
           </n-text>
         </n-h1>
       </div>
       <div data-sal="slide-up" data-sal-delay="900" data-sal-easing="ease-out-back" data-sal-duration="1000">
-        <n-h3 prefix="bar" type="primary">
+        <n-h3 prefix="bar" type="success" style="max-width: 75vh">
           <n-text type="info">
             We think so too and we're here to help you! 🤗
           </n-text>
@@ -148,10 +151,10 @@ const particlesOptions = {
       </div>
       <br>
       <div data-sal="slide-up" data-sal-delay="1000" data-sal-easing="ease-out-back" data-sal-duration="1000">
-        <n-h5 prefix="bar" type="success">
+        <n-h5 prefix="bar" type="primary" style="max-width: 45vh">
           <n-text type="info" style="font-weight: 100">
             At <span style="font-weight: 600">fundin<span><n-text type="primary">Go</n-text></span></span>
-            we gather all funding opportunities in one place<br>
+            we gather all funding opportunities in one place
             and send you personalized notifications about available funding
           </n-text>
         </n-h5>
