@@ -25,9 +25,9 @@ onMounted(() => {
 
 // set colors
 const theme = lightTheme
-theme.common.primaryColor = '#0CCE6B' // 0CCE6B 0CCE6B
+theme.common.primaryColor = '#0CCE6B' /// 0CCE6B 0CCE6B
 theme.common.primaryColorHover = '#0CCE6B'
-theme.common.successColor = '#00B2CA' // F7E733 00B2CA
+theme.common.successColor = '#00B2CA' /// F7E733 00B2CA
 theme.common.warningColor = '#F7F7F9'
 theme.common.infoColor = '#000000'
 
