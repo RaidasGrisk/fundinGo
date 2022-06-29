@@ -20,6 +20,7 @@ const theme = store.getters['theme/getTheme']
     <template #avatar>
       <a href="" style="text-decoration: none; color: inherit" class="floating">
         <span style="font-size: 3em;">
+          💸
         </span>
       </a>
     </template>
