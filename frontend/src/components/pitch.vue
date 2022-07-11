@@ -103,7 +103,7 @@ import { CrownOutlined, ExceptionOutlined, SmileOutlined, RocketFilled } from '@
         </template>
       </n-step>
         <n-step
-          title="Fill-in basic information about your company and get notified"
+          title="Fill-in basic info about your company"
           description="From now on, you will never miss a funding opportinity. We'll notify you the moment it arrives"
         >
           <template #icon>

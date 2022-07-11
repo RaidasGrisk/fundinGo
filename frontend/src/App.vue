@@ -44,7 +44,7 @@ const activeDrawer = ref(false)
             </n-layout-header>
             <n-layout-content>
               <n-layout>
-                <n-thing class="py-32 px-8 md:py-44 md:px-32" style="height: 86vh">
+                <n-thing class="py-16 px-8 md:py-44 md:px-32" style="height: 86vh">
                   <Banner />
                 </n-thing>
               </n-layout>
