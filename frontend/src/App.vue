@@ -49,7 +49,7 @@ const activeDrawer = ref(false)
                 </n-thing>
               </n-layout>
               <n-divider style="margin-top: 0px;"/>
-              <n-thing class="py-8 px-8 md:py-16 md:px-32">
+              <n-thing class="py-16 px-8 md:py-16 md:px-32">
                 <Pitch />
               </n-thing>
               <!-- <n-divider style="margin: 0px;"/>
@@ -58,7 +58,7 @@ const activeDrawer = ref(false)
               </n-thing> -->
             </n-layout-content>
             <n-layout-footer bordered>
-              <n-thing class="py-8 px-8 md:py-32 md:px-32">
+              <n-thing class="py-16 px-8 md:py-32 md:px-32">
                 <Footer />
               </n-thing>
             </n-layout-footer>

@@ -202,7 +202,7 @@ onMounted(() => {
         </div>
         <br>
         <div data-sal="slide-up" data-sal-delay="1000" data-sal-easing="ease-out-back" data-sal-duration="1000">
-          <n-button type="primary" size="large" style="--n-text-color: #222222; --n-height: 60px;" ref="button" strong @click="showModal = true">
+          <n-button type="primary" size="large" style="--n-text-color: #222222; --n-height: 60px; --n-border:2px solid #0CCE6B; --n-border-radius:4px;" ref="button" strong @click="showModal = true">
             📝 Subscribe
           </n-button>
         </div>
