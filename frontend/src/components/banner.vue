@@ -2,11 +2,13 @@
 import { loadFull } from "tsparticles"
 import { useIsMobile } from '.././utils/composables'
 import { useThemeVars } from 'naive-ui'
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 
 const themeVars = useThemeVars()
 const isMobile = useIsMobile()
 const particles = ref(null)
+const button = ref()
+const showModal = ref(false)
 
 const particlesInit = async (engine) => {
   await loadFull(engine);
@@ -134,6 +136,28 @@ const particlesOptions = computed(() => {
   "retina_detect": true
 }})
 
+// button waving
+const sleep = m => new Promise(r => setTimeout(r, m))
+
+const buttonWave = async () => {
+  for (let i = 0; i < 10; i++) {
+    await sleep(3000)
+    button.value.waveElRef.play()
+    await sleep(500)
+    button.value.waveElRef.play()
+  }
+}
+
+onMounted(() => {
+  // button.value.cssVars['--n-ripple-color'] = "#00B2CA"
+  // button.value.cssVars['--n-ripple-duration'] = "3s"
+  // button.value.cssVars['--n-wave-opacity'] = "1"
+  // button.value.cssVars['--n-color'] = "#0CCE6B"
+  buttonWave()
+
+})
+
+
 </script>
 
 <template>
@@ -144,37 +168,71 @@ const particlesOptions = computed(() => {
         :particlesInit="particlesInit"
         :particlesLoaded="particlesLoaded"
         :options="particlesOptions"
-        :style="{ height: '800px', position: 'absolute', left: '0px', top: '0px', right: '0px' }"
+        :style="{ height: '1000px', position: 'absolute', left: '0px', top: '0px', right: '0px' }"
       />
     </div>
-    <n-space :size="[0, 20]" vertical class="noselect">
-      <div data-sal="slide-up" data-sal-delay="500" data-sal-easing="ease-out-back" data-sal-duration="500">
-        <n-h1 prefix="bar" type="info" style="max-width: 75vh">
-          <n-text type="info" :style="isMobile ? '' : 'font-size: 120%;'">
-            Do you think getting government funding is
-            <n-gradient-text :gradient="{ deg: 100, from: 'var(--primary-color)', to: 'var(--success-color)' }" >overly complicated?</n-gradient-text>
-            🤯
-          </n-text>
-        </n-h1>
-      </div>
-      <div data-sal="slide-up" data-sal-delay="900" data-sal-easing="ease-out-back" data-sal-duration="1000">
-        <n-h3 prefix="bar" type="success" style="max-width: 75vh">
-          <n-text type="info">
-            We think so too and we're here to help you! 🤗
-          </n-text>
-        </n-h3>
-      </div>
-      <br>
-      <div data-sal="slide-up" data-sal-delay="1000" data-sal-easing="ease-out-back" data-sal-duration="1000">
-        <n-h5 prefix="bar" type="primary" style="max-width: 45vh">
-          <n-text type="info" style="font-weight: 100">
-            At <span style="font-weight: 600">fundin<span><n-text type="primary">Go</n-text></span></span>
-            we gather all funding opportunities in one place
-            and send you personalized notifications about available funding
-          </n-text>
-        </n-h5>
-      </div>
-    </n-space>
+    <div>
+      <n-space :size="[0, 20]" vertical class="noselect">
+        <div data-sal="slide-up" data-sal-delay="500" data-sal-easing="ease-out-back" data-sal-duration="500">
+          <n-h1 prefix="bar" type="info" style="max-width: 75vh">
+            <n-text type="info" :style="isMobile ? '' : 'font-size: 120%;'">
+              Do you think getting funding is
+              <n-gradient-text :gradient="{ deg: 100, from: 'var(--primary-color)', to: 'var(--success-color)' }" >overly complicated?</n-gradient-text>
+              🤯
+            </n-text>
+          </n-h1>
+        </div>
+        <div data-sal="slide-up" data-sal-delay="900" data-sal-easing="ease-out-back" data-sal-duration="1000">
+          <n-h3 prefix="bar" type="success" style="max-width: 75vh">
+            <n-text type="info">
+              We think so too and we're here to help you! 🤗
+            </n-text>
+          </n-h3>
+        </div>
+        <br>
+        <div data-sal="slide-up" data-sal-delay="1000" data-sal-easing="ease-out-back" data-sal-duration="1000">
+          <n-h5 prefix="bar" type="primary" style="max-width: 45vh">
+            <n-text type="info" style="font-weight: 100">
+              At <span style="font-weight: 600">fundin<span><n-text type="primary">Go</n-text></span></span>
+              we gather all funding opportunities in one place
+              and send you personalized notifications about available funding.
+              Once you pick your desired funding, we'll guide you through the complicated maze to fill in all the docs.
+            </n-text>
+          </n-h5>
+        </div>
+        <br>
+        <div data-sal="slide-up" data-sal-delay="1000" data-sal-easing="ease-out-back" data-sal-duration="1000">
+          <n-button type="primary" size="large" style="--n-text-color: #222222; --n-height: 60px;" ref="button" strong @click="showModal = true">
+            📝 Subscribe
+          </n-button>
+        </div>
+        <n-modal v-model:show="showModal">
+          <n-card
+            style="width: 600px"
+            title="Subscribe for newsletter"
+            :bordered="false"
+            size="huge"
+            role="dialog"
+            aria-modal="true"
+          >
+            <template #header-extra>
+              <div style="font-size: 25px">📝</div>
+            </template>
+            We'll notify you once the services are ready
+            <br><br>
+            <n-input-group>
+              <n-button type="primary" size="large" style="--n-text-color: #222222; margin-right: 1px;">
+                Subscribe
+              </n-button>
+              <n-input :style="{ width: '25vh' }" placeholder="your email"/>
+            </n-input-group>
+            <template #footer>
+              <!-- Footer -->
+            </template>
+          </n-card>
+        </n-modal>
+      </n-space>
+    </div>
   </n-el>
 </template>
 

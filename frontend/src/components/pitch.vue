@@ -103,8 +103,8 @@ import { CrownOutlined, ExceptionOutlined, SmileOutlined, RocketFilled } from '@
         </template>
       </n-step>
         <n-step
-          title="Fill in the form and get notified"
-          description="From now on, you will never miss a funding opportinity. Never!"
+          title="Fill-in basic information about your company and get notified"
+          description="From now on, you will never miss a funding opportinity. We'll notify you the moment it arrives"
         >
           <template #icon>
             <n-icon :component="ExceptionOutlined"/>

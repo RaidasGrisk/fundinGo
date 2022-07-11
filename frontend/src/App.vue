@@ -38,18 +38,18 @@ const activeDrawer = ref(false)
     <n-loading-bar-provider>
       <n-message-provider placement="top-right">
         <n-notification-provider>
-          <n-layout>
+          <n-layout style="height: 100vh" :native-scrollbar="false">
             <n-layout-header class="py-4 px-8 md:py-4 md:px-16" bordered>
               <Header />
             </n-layout-header>
-            <n-layout-content >
+            <n-layout-content>
               <n-layout>
-                <n-thing class="py-24 px-8 md:py-32 md:px-32">
+                <n-thing class="py-32 px-8 md:py-44 md:px-32" style="height: 86vh">
                   <Banner />
                 </n-thing>
               </n-layout>
               <n-divider style="margin-top: 0px;"/>
-              <n-thing class="py-24 px-8 md:py-32 md:px-32">
+              <n-thing class="py-8 px-8 md:py-16 md:px-32">
                 <Pitch />
               </n-thing>
               <!-- <n-divider style="margin: 0px;"/>
