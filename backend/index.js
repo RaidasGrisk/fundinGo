@@ -30,16 +30,44 @@ MongoClient.connect(connectionString, (err, client) => {
 
   const db = client.db('fundingo')
 
-  app.post('/getsubs', function (req, res) {
+  app.get('/getsubs', function (req, res) {
     db.collection('subs').find().toArray().then(resp => {
       res.send(resp)
     })
   })
 
   app.post('/subscribe', function (req, res) {
+    // console.log(req.body, req.body.email)
+    // res.send('success', req.body, req.body.email)
     db.collection('subs').insertOne(req.body).then(resp => {
       res.send('success')
     })
+  })
+})
+
+// why do we make a separate connection with every request?
+// vercel will make a new connection if this is done properly
+// these connection will keep on growing until..?
+// So, that is why we connect and close the cb conection on every request
+app.get('/test_getsubs', (req, res) => {
+  const client = new MongoClient(connectionString)
+  client.connect((err) => {
+   const db = client.db('fundingo')
+   db.collection('subs').find().toArray().then(resp => {
+     client.close()
+     res.send(resp)
+   })
+  })
+})
+
+app.post('/test_subscribe', (req, res) => {
+  const client = new MongoClient(connectionString)
+  client.connect((err) => {
+   const db = client.db('fundingo')
+   db.collection('subs').insertOne(req.body).then(resp => {
+     client.close()
+     res.send('success')
+   })
   })
 })
 
