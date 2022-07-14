@@ -16,7 +16,7 @@ app.get("/", async (req, res) => {
   try {
     res.json({
       status: 200,
-      message: "Ok",
+      message: `Ok: ${mongo_acc}`,
     })
   } catch (error) {
     console.error(error);
