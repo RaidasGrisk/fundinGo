@@ -16,7 +16,7 @@ app.get("/", async (req, res) => {
   try {
     res.json({
       status: 200,
-      message: `Ok: ${mongo_acc}`,
+      message: `Ok`,
     })
   } catch (error) {
     console.error(error);
@@ -30,13 +30,12 @@ MongoClient.connect(connectionString, (err, client) => {
 
   const db = client.db('fundingo')
 
-  app.get('/test', function (req, res) {
-    db.collection('subs').find().toArray().then(resp => {
-      res.send(resp)
+  app.post('/subscribe', function (req, res) {
+    db.collection('subs').insertOne(req.body).then(resp => {
+      res.send('success')
     })
   })
 })
-
 
 const PORT = process.env.PORT || 8080
 app.listen(PORT, () => console.log(`Server is running in port ${PORT}`))
