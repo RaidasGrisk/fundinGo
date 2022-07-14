@@ -3,12 +3,46 @@ import { loadFull } from "tsparticles"
 import { useIsMobile } from '.././utils/composables'
 import { useThemeVars } from 'naive-ui'
 import { ref, computed, onMounted } from 'vue'
+import subscribeButton from '.././components/subscribeButton.vue'
+// import axios from 'axios'
+
+// const message = useMessage()
+// const loadingBar = useLoadingBar()
+// console.log(loadingBar)
+
 
 const themeVars = useThemeVars()
 const isMobile = useIsMobile()
 const particles = ref(null)
-const button = ref()
-const showModal = ref(false)
+// const button = ref()
+// const showModal = ref(false)
+// const email = ref('')
+// const isLoading = ref(false)
+//
+// const subscribeClick = async () => {
+//   loadingBar.loadingBarRef.value.cssVars['--n-height'] = "5px"
+//   isLoading.value = true
+//   loadingBar.start()
+//   console.log(email.value)
+//   await axios({
+//     method: 'post',
+//     url: 'http://localhost:8080/subscribe',
+//     data: {
+//       email: email.value, // This is the body part
+//     }
+//   }).then((res) => {
+//     console.log('success')
+//     message.success('Thank you for subscribing!')
+//     isLoading.value = false
+//     loadingBar.finish()
+//   })
+//   .catch((error) => {
+//     console.log(error)
+//     message.info(error.response.data)
+//     isLoading.value = false
+//     loadingBar.error()
+//   })
+// }
 
 const particlesInit = async (engine) => {
   await loadFull(engine);
@@ -136,26 +170,26 @@ const particlesOptions = computed(() => {
   "retina_detect": true
 }})
 
-// button waving
-const sleep = m => new Promise(r => setTimeout(r, m))
-
-const buttonWave = async () => {
-  for (let i = 0; i < 10; i++) {
-    await sleep(3000)
-    button.value.waveElRef.play()
-    await sleep(500)
-    button.value.waveElRef.play()
-  }
-}
-
-onMounted(() => {
-  // button.value.cssVars['--n-ripple-color'] = "#00B2CA"
-  // button.value.cssVars['--n-ripple-duration'] = "3s"
-  // button.value.cssVars['--n-wave-opacity'] = "1"
-  // button.value.cssVars['--n-color'] = "#0CCE6B"
-  buttonWave()
-
-})
+// // button waving
+// const sleep = m => new Promise(r => setTimeout(r, m))
+//
+// const buttonWave = async () => {
+//   for (let i = 0; i < 10; i++) {
+//     await sleep(3000)
+//     button.value.waveElRef.play()
+//     await sleep(500)
+//     button.value.waveElRef.play()
+//   }
+// }
+//
+// onMounted(() => {
+//   // button.value.cssVars['--n-ripple-color'] = "#00B2CA"
+//   // button.value.cssVars['--n-ripple-duration'] = "3s"
+//   // button.value.cssVars['--n-wave-opacity'] = "1"
+//   // button.value.cssVars['--n-color'] = "#0CCE6B"
+//   buttonWave()
+//
+// })
 
 
 </script>
@@ -201,7 +235,8 @@ onMounted(() => {
           </n-h5>
         </div>
         <br>
-        <div data-sal="slide-up" data-sal-delay="1000" data-sal-easing="ease-out-back" data-sal-duration="1000">
+        <subscribeButton />
+        <!-- <div data-sal="slide-up" data-sal-delay="1000" data-sal-easing="ease-out-back" data-sal-duration="1000">
           <n-button type="primary" size="large" style="--n-text-color: #222222; --n-height: 60px; --n-border:2px solid #0CCE6B; --n-border-radius:4px;" ref="button" strong @click="showModal = true">
             📝 Subscribe
           </n-button>
@@ -221,16 +256,15 @@ onMounted(() => {
             We'll notify you once the services are ready
             <br><br>
             <n-input-group>
-              <n-button type="primary" size="large" style="--n-text-color: #222222; margin-right: 1px;">
+              <n-button type="primary" size="large" style="--n-text-color: #222222; margin-right: 1px;" @click="subscribeClick" :loading="isLoading">
                 Subscribe
               </n-button>
-              <n-input :style="{ width: '25vh' }" placeholder="your email"/>
+              <n-input :style="{ width: '25vh' }" placeholder="your email" v-model:value="email"/>
             </n-input-group>
             <template #footer>
-              <!-- Footer -->
             </template>
           </n-card>
-        </n-modal>
+        </n-modal> -->
       </n-space>
     </div>
   </n-el>

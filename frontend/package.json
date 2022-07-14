@@ -8,6 +8,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "axios": "^0.27.2",
     "particles.vue3": "^2.1.0",
     "sal.js": "^0.8.5",
     "tsparticles": "^2.1.0",

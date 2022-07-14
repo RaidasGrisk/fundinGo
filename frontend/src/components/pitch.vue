@@ -1,6 +1,7 @@
 <script setup>
 import { ref, onMounted, watch } from 'vue'
 import { CrownOutlined, ExceptionOutlined, SmileOutlined, RocketFilled } from '@vicons/antd'
+import subscribeButton from '.././components/subscribeButton.vue'
 
 // https://stackoverflow.com/questions/57280413/how-to-trigger-function-on-viewport-visible-with-vue-viewport-plugin
 
@@ -133,12 +134,7 @@ import { CrownOutlined, ExceptionOutlined, SmileOutlined, RocketFilled } from '@
       </template> -->
       <template #action>
         <n-divider style="margin-top: -20px;"/>
-        <n-input-group>
-          <n-button type="primary" size="large" style="--n-text-color: #222222; margin-right: 1px;">
-            Subscribe
-          </n-button>
-          <n-input :style="{ width: '25vh' }" placeholder="your email"/>
-        </n-input-group>
+        <subscribeButton />
       </template>
     </n-card>
 
