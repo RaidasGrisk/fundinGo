@@ -30,6 +30,12 @@ MongoClient.connect(connectionString, (err, client) => {
 
   const db = client.db('fundingo')
 
+  app.post('/getsubs', function (req, res) {
+    db.collection('subs').find().toArray().then(resp => {
+      res.send(resp)
+    })
+  })
+
   app.post('/subscribe', function (req, res) {
     db.collection('subs').insertOne(req.body).then(resp => {
       res.send('success')
